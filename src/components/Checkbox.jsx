@@ -3,7 +3,7 @@ const Checkbox = ({ label, checked, onChange }) => {
     <label className="flex items-center space-x-2 cursor-pointer">
       <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} className="hidden" />
       <div
-        className={`w-5 h-5 rounded-md flex items-center justify-center border ${
+        className={`w-5 h-5  rounded-md flex items-center justify-center border ${
           checked ? "bg-primary-dark border-primary-dark" : "bg-white border-gray-300"
         }`}
       >
@@ -19,7 +19,7 @@ const Checkbox = ({ label, checked, onChange }) => {
           </svg>
         )}
       </div>
-      <span className={`  ${checked ? "text-black " : "text-gray-700"}`}>{label}</span>
+      <p className={` ${checked ? "text-black " : "text-gray-700"}`}>{label}</p>
     </label>
   );
 };
