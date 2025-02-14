@@ -1,3 +1,10 @@
+import Landing from "@/components/Landing/Landing";
+
 export default function Home() {
-  return <div className="bg-red-500">hellow world</div>;
+  return (
+    <div className="">
+      <Landing />
+      {/* <PatientForm />{" "} */}
+    </div>
+  );
 }
