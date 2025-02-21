@@ -1,4 +1,3 @@
-import LandingForm from "./LandingForm";
 import QuickConsultServiceCard from "./QuickConsultServiceCard";
 import SearchBox from "./SearchBox";
 
@@ -6,8 +5,9 @@ const Landing = () => {
   return (
     <div className="">
       <SearchBox />
+      {/* <SearchResult /> */}
       <QuickConsultServiceCard />
-      <LandingForm />
+      {/* <LandingForm /> */}
     </div>
   );
 };
