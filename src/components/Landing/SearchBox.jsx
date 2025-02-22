@@ -108,8 +108,8 @@ const SearchBox = () => {
       </div>
 
       {/* Services List */}
-      <div className="flex justify-center my-8 max-w-[1190px] mx-auto w-full">
-        <div className="flex gap-4 overflow-x-auto">
+      <div className="flex justify-center my-8 max-w-[1190px] mx-auto w-full px-5 lg:px-0">
+        <div className="flex flex-wrap justify-center gap-4 overflow-x-auto">
           {services.map((service) => (
             <div
               key={service.value}

@@ -8,13 +8,13 @@ const CustomSelect = ({ label, placeholder, options, value, onChange, required =
   return (
     <div className="w-full max-w-[600px]">
       <label className="text-sm font-medium">
-        {label}
+        {label && label}
         {required && <span className="text-red-500 text-sm"> *</span>}
       </label>
       <div className="relative">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex justify-between items-center px-6 py-3 border border-gray-300 rounded-[22px] h-[60px] bg-white"
+          className="w-full flex justify-between items-center px-6 py-3 border border-gray-300 rounded-[16px] h-[48px] bg-white"
         >
           <span className={value ? "text-black " : "text-gray-400 text-sm"}>
             {value ? options.find((opt) => opt.value === value)?.label : placeholder}
@@ -32,7 +32,7 @@ const CustomSelect = ({ label, placeholder, options, value, onChange, required =
                   setIsOpen(false);
                 }}
                 className={`px-5 py-3 cursor-pointer transition-colors ${
-                  value === opt.value ? "bg-primary-light text-gray-600 font-medium" : "hover:bg-gray-100"
+                  value === opt.value ? "bg-primary-light  font-medium" : "hover:bg-gray-100"
                 }`}
               >
                 {opt?.label}

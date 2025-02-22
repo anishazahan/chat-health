@@ -9,7 +9,7 @@ const LandingForm = () => {
   return (
     <div className="max-w-[800px] flex justify-center items-start mx-auto mt-10  w-full ">
       <div className="mr-auto">
-        <InfoCard />
+        <InfoCard description={"Certificates are usually sent within an hour"} />
         <BasicInfoForm />
         <AddressForm />
         <SymptomsForm />

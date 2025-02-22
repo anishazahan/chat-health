@@ -5,3 +5,35 @@
 body {
   font-family: var(--font-inter), sans-serif;
 }
+
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 5px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #d8d8d8;
+  width: 4px !important;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00BFB2;
+  border-radius: 5px !important;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 5px;
+  background-color: #00BFB2;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: #00BFB2;
+  border-radius: 5px !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

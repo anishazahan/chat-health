@@ -1,15 +1,33 @@
-const Input = ({ icon, placeholder = "Enter value", type = "text", value, onChange, name }) => {
+const Input = ({
+  icon,
+  placeholder = "Enter value",
+  type = "text",
+  value,
+  onChange,
+  name,
+  isRequired,
+  register,
+  label,
+}) => {
   return (
-    <div className="flex items-center rounded-[22px] px-5 py-3 w-full border border-gray-300 focus-within:border-teal-400 h-[60px] max-w-[600px]">
-      {icon && <div className=" mr-2 text-xl">{icon}</div>}
-      <input
-        type={type ? type : text}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        className="bg-transparent outline-none w-full text-sm  placeholder:text-gray-400"
-      />
+    <div className="w-full max-w-[600px] space-y-2">
+      <label htmlFor={name} className="text-sm  text-gray-500">
+        {" "}
+        {label && label}
+      </label>
+      <div className="flex items-center rounded-[16px] px-5 py-3 w-full focus-within:border-primary-dark border border-transparent h-[48px] bg-[#F5F5F5] max-w-[600px] focus:bg-[#F5F5F5]">
+        {icon && <div className="mr-2 text-xl">{icon}</div>}
+        <input
+          type={type}
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          required={isRequired}
+          {...(register ? register(name) : {})}
+          className="bg-transparent outline-none w-full text-sm font-medium placeholder:text-gray-400 placeholder:font-normal "
+        />
+      </div>
     </div>
   );
 };
