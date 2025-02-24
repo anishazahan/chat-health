@@ -11,7 +11,7 @@ import { IoChevronDownSharp } from "react-icons/io5";
 import { LuSend } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 
-const services = [
+export const services = [
   { value: "general-practice", label: "General Practitioner", img: "/images/service-img/general.png" },
   { value: "telehealth", label: "Telehealth", img: "/images/service-img/call-calling.png" },
   { value: "physiotherapist", label: "Physiotherapist", img: "/images/service-img/pysio.png" },
@@ -20,7 +20,7 @@ const services = [
   { value: "cardiologist", label: "Cardiologist", img: "/images/service-img/psy.png" },
 ];
 
-const locations = [
+export const locations = [
   { value: "sydney-2000", label: "Sydney, NSW 2000" },
   { value: "sydney-2001", label: "Sydney, NSW 2001" },
   { value: "sydney-2002", label: "Sydney, NSW 2002" },

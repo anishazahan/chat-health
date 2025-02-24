@@ -5,6 +5,7 @@ const initialState = {
   selectedLocation: null,
   serviceDropdown: false,
   locationDropdown: false,
+  selectedConsult: null,
 };
 
 const landingSearchSlice = createSlice({
@@ -25,9 +26,17 @@ const landingSearchSlice = createSlice({
     toggleLocationDropdown: (state) => {
       state.locationDropdown = !state.locationDropdown;
     },
+    setSelectedConsult: (state, action) => {
+      state.selectedConsult = action.payload;
+    },
   },
 });
 
-export const { setSelectedService, setSelectedLocation, toggleServiceDropdown, toggleLocationDropdown } =
-  landingSearchSlice.actions;
+export const {
+  setSelectedService,
+  setSelectedLocation,
+  toggleServiceDropdown,
+  toggleLocationDropdown,
+  setSelectedConsult,
+} = landingSearchSlice.actions;
 export default landingSearchSlice.reducer;

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CommonBtn from "../CommonBtn";
 import Modal from "../Modal";
 
+import { handleSentCodeModal, setIsPrevSignupModal, setIsVerifyWithCode } from "@/redux/slices/signUpModalSlice";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft } from "react-icons/fa";
@@ -53,10 +54,13 @@ const SentCodeModal = () => {
     const code = enteredCode.join("");
     if (code.length !== 4) {
       alert("Please enter a valid 4-digit code.");
-      return;
+      // return;
     }
-    console.log("Entered Code:", code);
+    // console.log("Entered Code:", code);
     alert(`Verifying code: ${code}`);
+    dispatch(handleSentCodeModal(false));
+    dispatch(setIsVerifyWithCode(true));
+    dispatch(setIsPrevSignupModal(false));
   };
 
   const handleResend = () => {

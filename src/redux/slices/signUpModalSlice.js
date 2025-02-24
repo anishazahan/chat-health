@@ -7,6 +7,9 @@ const initialState = {
   IHUAddModal: false,
   isProceedIHIComplete: false,
   sentCodeModal: false,
+  isVerifyWithCode: false,
+  addClinicModal: false,
+  addDoctorModal: false,
 };
 
 const signUpModalSlice = createSlice({
@@ -31,6 +34,15 @@ const signUpModalSlice = createSlice({
     handleSentCodeModal: (state, action) => {
       state.sentCodeModal = action?.payload;
     },
+    setIsVerifyWithCode: (state, action) => {
+      state.isVerifyWithCode = action?.payload;
+    },
+    handleAddClinicModal: (state, action) => {
+      state.addClinicModal = action?.payload;
+    },
+    handleAddDoctorModal: (state, action) => {
+      state.addDoctorModal = action?.payload;
+    },
   },
 });
 
@@ -41,5 +53,8 @@ export const {
   setIHUAddModal,
   setIsProceedIHIComplete,
   handleSentCodeModal,
+  setIsVerifyWithCode,
+  handleAddClinicModal,
+  handleAddDoctorModal,
 } = signUpModalSlice.actions;
 export default signUpModalSlice.reducer;

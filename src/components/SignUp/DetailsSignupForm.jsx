@@ -109,10 +109,8 @@ const DetailsSignupForm = () => {
   };
 
   const onSubmit = (data) => {
-    console.log("Submitted Data:", data);
+    // console.log("Submitted Data:", data);
   };
-
-  console.log(watch("relation_type"));
 
   return (
     <div>
