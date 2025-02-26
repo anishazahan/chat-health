@@ -10,6 +10,7 @@ const initialState = {
   isVerifyWithCode: false,
   addClinicModal: false,
   addDoctorModal: false,
+  isShowPaymentForm: false,
 };
 
 const signUpModalSlice = createSlice({
@@ -42,6 +43,9 @@ const signUpModalSlice = createSlice({
     },
     handleAddDoctorModal: (state, action) => {
       state.addDoctorModal = action?.payload;
+    },
+    setIsShowPaymentForm: (state, action) => {
+      state.isShowPaymentForm = action?.payload;
     },
   },
 });

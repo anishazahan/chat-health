@@ -1,9 +1,12 @@
 "use client";
 
+import { handleAddDoctorModal } from "@/redux/slices/signUpModalSlice";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiSearch } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import AddDoctorModal from "./AddDoctorModal";
 
 const doctorsData = [
   { id: 1, name: "Dr. Dianne Russell", image: "/doctor1.jpg" },
@@ -16,38 +19,52 @@ const doctorsData = [
 
 export default function PractitionerSelection() {
   const { register, watch } = useForm();
+  const dispatch = useDispatch();
   const searchQuery = watch("search", "");
   const [expanded, setExpanded] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
 
   const visibleDoctors = expanded ? doctorsData : doctorsData.slice(0, 3);
   const filteredDoctors = visibleDoctors.filter((doc) => doc.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  const { addDoctorModal, addClinicModal } = useSelector((state) => state.signUpModal);
 
   return (
-    <div className="w-full max-w-2xl mx-auto mt-6">
+    <div className="w-full p-6">
       <h2 className="text-lg font-semibold">Select your usual practitioner</h2>
-      <div className="relative mt-3">
-        <FiSearch className="absolute left-3 top-3 text-gray-400" />
+      <div className="relative mt-3 ">
+        <FiSearch className="absolute left-6 top-4 " size={18} />
         <input
           type="text"
           placeholder="Search your usual practitioner"
           {...register("search")}
-          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none"
+          className="w-full text-sm pl-12 pr-4 py-4  rounded-full focus:outline-none placeholder:text-gray-500 bg-gray-100"
         />
       </div>
 
-      <div className="mt-4 grid grid-cols-3 gap-3">
+      <div className="mt-6 grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {filteredDoctors.map((doctor) => (
           <div
             key={doctor.id}
             onClick={() => setSelectedDoctor(doctor.id)}
-            className={`cursor-pointer flex flex-col items-center p-3 border rounded-lg transition-all ${
-              selectedDoctor === doctor.id ? "bg-teal-500 text-white" : "bg-white"
+            className={`cursor-pointer  hover:border-primary-dark flex flex-col items-center px-4 py-6 border rounded-[34px] shadow-sm transition-all ${
+              selectedDoctor === doctor.id ? "bg-primary-dark text-white" : "bg-white"
             }`}
           >
-            <Image src={doctor.image} alt={doctor.name} width={50} height={50} className="rounded-full" />
-            <p className="mt-2 font-medium text-center">{doctor.name}</p>
-            <p className="text-xs text-gray-500">Typically within 24 hours</p>
+            <div className="flex items-center gap-3">
+              <Image
+                src={"/images/service-img/doctor.png"}
+                alt={doctor.name}
+                width={60}
+                height={60}
+                className="rounded-full h-[60px] w-[60px] object-cover"
+              />
+              <div className="">
+                <p className=" font-medium ">{doctor?.name}</p>
+                <p className={`text-xs  mt-2 ${selectedDoctor === doctor.id ? " text-white" : "text-gray-600"}`}>
+                  Typically within 24 hours
+                </p>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -57,6 +74,15 @@ export default function PractitionerSelection() {
           {expanded ? "See less" : "See more"}
         </button>
       </div>
+
+      <p
+        onClick={() => dispatch(handleAddDoctorModal(true))}
+        className="text-center my-5 hover:underline text-secondary-dark cursor-pointer"
+      >
+        My Doctor is not listed
+      </p>
+
+      {addDoctorModal && <AddDoctorModal />}
     </div>
   );
 }

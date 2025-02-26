@@ -189,7 +189,7 @@ export default function ClinicSelection() {
         onClick={() => dispatch(handleAddClinicModal(true))}
         className="text-center my-5 hover:underline text-secondary-dark cursor-pointer"
       >
-        My Doctor is not listed
+        My Clinic is not listed
       </p>
 
       {addClinicModal && <AddClinicModal />}

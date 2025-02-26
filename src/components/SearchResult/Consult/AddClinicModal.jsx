@@ -35,7 +35,6 @@ const AddClinicModal = () => {
             register={register}
             isRequired
           />
-          {errors.clinic_name && <p className="text-red-500 text-sm">Clinic name is required</p>}
 
           <Input
             label="Clinic Street Address"
@@ -44,7 +43,6 @@ const AddClinicModal = () => {
             register={register}
             isRequired
           />
-          {errors.clinic_address && <p className="text-red-500 text-sm">Clinic address is required</p>}
 
           <Input
             label="Clinic Email Address (optional)"

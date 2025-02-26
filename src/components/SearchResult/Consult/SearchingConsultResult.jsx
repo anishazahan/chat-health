@@ -10,6 +10,7 @@ const SearchingConsultResult = () => {
       <ClinicSelection />
       <PractitionerSelection />
       <PrescriptionForm />
+
       <PaymentForm />
       <DoctorProfile />
     </div>

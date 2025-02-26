@@ -1,0 +1,54 @@
+/* From Uiverse.io by satyamchaudharydev */ 
+.loading {
+    --speed-of-animation: 0.9s;
+    --gap: 6px;
+    --first-color: #00BFB2;
+    --second-color: #007AFF;
+    --third-color: #00BFB2;
+    --fourth-color: #007AFF;
+    --fifth-color: #00BFB2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    gap: 6px;
+ 
+   }
+   
+   .loading span {
+    width: 20px;
+    height: 70px;
+    border-radius: 25px;
+    background: var(--first-color);
+    animation: scale var(--speed-of-animation) ease-in-out infinite;
+   }
+   
+   .loading span:nth-child(2) {
+    background: var(--second-color);
+    animation-delay: -1s;
+   }
+   
+   .loading span:nth-child(3) {
+    background: var(--third-color);
+    animation-delay: -0.9s;
+   }
+   
+   .loading span:nth-child(4) {
+    background: var(--fourth-color);
+    animation-delay: -0.8s;
+   }
+   
+   .loading span:nth-child(5) {
+    background: var(--fifth-color);
+    animation-delay: -0.7s;
+   }
+   
+   @keyframes scale {
+    0%, 40%, 100% {
+     transform: scaleY(0.05);
+    }
+   
+    20% {
+     transform: scaleY(1);
+    }
+   }
