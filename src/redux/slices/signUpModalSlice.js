@@ -60,5 +60,6 @@ export const {
   setIsVerifyWithCode,
   handleAddClinicModal,
   handleAddDoctorModal,
+  setIsShowPaymentForm,
 } = signUpModalSlice.actions;
 export default signUpModalSlice.reducer;

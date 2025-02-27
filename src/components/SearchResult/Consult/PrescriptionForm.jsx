@@ -2,11 +2,14 @@
 
 import CommonBtn from "@/components/CommonBtn";
 import Input from "@/components/Input";
+import { setIsShowPaymentForm } from "@/redux/slices/signUpModalSlice";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoMdAdd } from "react-icons/io";
+import { useDispatch } from "react-redux";
 
 const PrescriptionForm = () => {
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const [selectedOption, setSelectedOption] = useState("sms");
 
@@ -99,7 +102,7 @@ const PrescriptionForm = () => {
       </div>
 
       <div className="w-full my-8">
-        <CommonBtn type="submit" className="w-full">
+        <CommonBtn onClick={() => dispatch(setIsShowPaymentForm(true))} type="submit" className="w-full">
           Continue
         </CommonBtn>
       </div>

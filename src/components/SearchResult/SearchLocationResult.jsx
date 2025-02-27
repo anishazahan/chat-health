@@ -30,7 +30,7 @@ const clinics = [
   },
 ];
 
-const ClinicList = () => {
+const SearchLocationResult = () => {
   const [currentIndexes, setCurrentIndexes] = useState(
     clinics.reduce((acc, clinic) => ({ ...acc, [clinic.id]: 0 }), {})
   );
@@ -46,12 +46,12 @@ const ClinicList = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex flex-col-reverse lg:flex-row px-5 sm:px-10 w-full 2xl:max-w-[1440px] mx-auto items-start gap-5">
       {/* Left side clinics list */}
-      <div className="w-1/2 p-4">
-        <h2 className="text-lg font-bold">Clinics close to your location</h2>
+      <div className="w-1/2">
+        <h2 className="text-lg font-bold mb-3">Clinics close to your location</h2>
         {clinics.map((clinic) => (
-          <div key={clinic.id} className="border p-4 mb-4 rounded-lg shadow">
+          <div key={clinic.id} className="border p-4 mb-4 rounded-[34px] ">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <img src={clinic.logo} alt={clinic.name} className="w-10 h-10 mr-2" />
@@ -64,13 +64,13 @@ const ClinicList = () => {
                   </p>
                 </div>
               </div>
-              <button className="bg-teal-500 text-white px-4 py-1 rounded">View All</button>
+              <button className="bg-teal-500 text-white px-4 py-1 rounded-full">View All</button>
             </div>
             <div className="flex items-center mt-2">
               <FaChevronLeft className="cursor-pointer" onClick={() => handleScroll(clinic.id, -1)} />
               <div className="flex overflow-hidden mx-2">
                 {clinic.days.slice(currentIndexes[clinic.id], currentIndexes[clinic.id] + 5).map((day, index) => (
-                  <div key={index} className="w-10 h-10 flex items-center justify-center border rounded mx-1">
+                  <div key={index} className="w-10 h-10 flex items-center justify-center border rounded-[16px] mx-1">
                     {day}
                   </div>
                 ))}
@@ -82,8 +82,13 @@ const ClinicList = () => {
       </div>
 
       {/* Right side map */}
-      <div className="w-1/2 h-[500px]">
-        <MapContainer center={[51.505, -0.09]} zoom={13} className="h-full w-full">
+      <div className="w-1/2 h-[500px] rounded-[34px]">
+        <MapContainer
+          style={{ borderRadius: "34px !important" }}
+          center={[51.505, -0.09]}
+          zoom={13}
+          className="h-full w-full rounded-[34px]"
+        >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {clinics.map((clinic) => (
             <Marker key={clinic.id} position={clinic.position}>
@@ -96,4 +101,4 @@ const ClinicList = () => {
   );
 };
 
-export default ClinicList;
+export default SearchLocationResult;
