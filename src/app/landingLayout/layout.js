@@ -1,4 +1,5 @@
-import ReduxProviders from "@/redux/reduxProvider";
+import Footer from "@/components/shared/Footer";
+import Navbar from "@/components/shared/Navbar";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -15,10 +16,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <ReduxProviders>
-        <body className={`${inter.variable} antialiased`}>{children}</body>
-      </ReduxProviders>
-    </html>
+    <div className="">
+      <Navbar />
+      <main className="">{children}</main>
+      <Footer />
+    </div>
   );
 }

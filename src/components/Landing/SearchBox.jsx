@@ -56,7 +56,7 @@ const SearchBox = () => {
             <IoChevronDownSharp className="ml-auto text-gray-400 text-xl" />
           </div>
           {serviceDropdown && (
-            <div className="absolute left-0 right-0 mt-2 bg-white border shadow-lg rounded-md z-10">
+            <div className="absolute left-0 right-0 mt-2 bg-white border shadow-lg rounded-md z-60">
               {services.map((option) => (
                 <div
                   key={option.value}
@@ -84,7 +84,7 @@ const SearchBox = () => {
             <IoChevronDownSharp className="ml-auto text-gray-400 text-xl" />
           </div>
           {locationDropdown && (
-            <div className="absolute left-0 right-0 mt-2 bg-white border shadow-lg rounded-md z-10">
+            <div className="absolute left-0 right-0 mt-2 bg-white border shadow-lg rounded-md z-60">
               <div className="rounded-xl bg-primary-light px-4 py-3 text-text-primary flex items-center gap-2 m-2">
                 <button>
                   <LuSend />
@@ -108,21 +108,24 @@ const SearchBox = () => {
       </div>
 
       {/* Services List */}
-      <div className="flex justify-center my-8 max-w-[1190px] mx-auto w-full px-5 lg:px-0">
-        <div className="flex flex-wrap justify-center gap-4 overflow-x-auto">
-          {services.map((service) => (
-            <div
-              key={service.value}
-              className={`min-w-[185px] flex flex-col items-center gap-4 p-4 border rounded-[24px] cursor-pointer transition-all 
+
+      {!selectedLocation && (
+        <div className="flex justify-center my-8 max-w-[1190px] mx-auto w-full px-5 lg:px-0">
+          <div className="flex flex-wrap justify-center gap-4 overflow-x-auto">
+            {services.map((service) => (
+              <div
+                key={service.value}
+                className={`min-w-[185px] flex flex-col items-center gap-4 p-4 border rounded-[24px] cursor-pointer transition-all 
             ${selectedService?.value === service.value ? "bg-primary-light border-teal-500" : "hover:bg-gray-100"}`}
-              onClick={() => dispatch(setSelectedService(service))}
-            >
-              <Image src={service.img} alt={service.label} width={35} height={35} className="object-contain" />
-              <p className="text-sm font-medium text-center whitespace-nowrap">{service.label}</p>
-            </div>
-          ))}
+                onClick={() => dispatch(setSelectedService(service))}
+              >
+                <Image src={service.img} alt={service.label} width={35} height={35} className="object-contain" />
+                <p className="text-sm font-medium text-center whitespace-nowrap">{service.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
