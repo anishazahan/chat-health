@@ -4,14 +4,20 @@ import { useDispatch, useSelector } from "react-redux";
 import CommonBtn from "../CommonBtn";
 import Modal from "../Modal";
 
-import { handleSentCodeModal, setIsPrevSignupModal, setIsVerifyWithCode } from "@/redux/slices/signUpModalSlice";
+import {
+  handleSentCodeModal,
+  setIsPrevSignupModal,
+  setIsSpinnerModalShow,
+  setIsVerifyWithCode,
+} from "@/redux/slices/signUpModalSlice";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft } from "react-icons/fa";
+import LoadingModal from "../Loading/LoadingModal";
 
 const SentCodeModal = () => {
   const dispatch = useDispatch();
-  const { isProceedIHIComplete, sentCodeModal } = useSelector((state) => state.signUpModal);
+  const { isProceedIHIComplete, sentCodeModal, isSpinnerModalShow } = useSelector((state) => state.signUpModal);
   const router = useRouter();
   const {
     handleSubmit,
@@ -58,9 +64,15 @@ const SentCodeModal = () => {
     }
     // console.log("Entered Code:", code);
     alert(`Verifying code: ${code}`);
-    dispatch(handleSentCodeModal(false));
     dispatch(setIsVerifyWithCode(true));
-    dispatch(setIsPrevSignupModal(false));
+
+    dispatch(setIsSpinnerModalShow(true));
+
+    setTimeout(() => {
+      dispatch(setIsSpinnerModalShow(false));
+      dispatch(handleSentCodeModal(false));
+      dispatch(setIsPrevSignupModal(false));
+    }, 5000);
   };
 
   const handleResend = () => {
@@ -123,6 +135,8 @@ const SentCodeModal = () => {
           </div>
         </Modal>
       )}
+
+      {isSpinnerModalShow && <LoadingModal />}
     </div>
   );
 };

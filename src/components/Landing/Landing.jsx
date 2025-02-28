@@ -1,7 +1,6 @@
 "use client";
 
 import { useSelector } from "react-redux";
-import ClinicDetails from "../SearchResult/ClinicDetails";
 import SearchingConsultResult from "../SearchResult/Consult/SearchingConsultResult";
 import SearchLocationResult from "../SearchResult/SearchLocationResult";
 import QuickConsultServiceCard from "./QuickConsultServiceCard";
@@ -25,7 +24,7 @@ const Landing = () => {
 
       {selectedConsult && !selectedLocation && <SearchingConsultResult />}
 
-      <ClinicDetails />
+      {/* <ClinicDetails /> */}
 
       {/* <LandingForm /> */}
     </div>

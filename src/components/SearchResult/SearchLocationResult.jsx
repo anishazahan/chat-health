@@ -2,6 +2,7 @@
 
 import "leaflet/dist/leaflet.css";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { HiOutlineLocationMarker } from "react-icons/hi";
@@ -88,12 +89,12 @@ const SearchLocationResult = () => {
                 </div>
               </div>
               {/* right button */}
-              <button
-                onClick={() => dispatch(handleShowClinicDetail(true))}
-                className="bg-primary-dark text-white px-10 h-[48px]  rounded-full hover:opacity-90 font-semibold"
+              <Link
+                href="/chat-health/clinic/id"
+                className="bg-primary-dark text-white px-10 h-[48px]  rounded-full hover:opacity-90 font-semibold flex items-center justify-center"
               >
                 View All
-              </button>
+              </Link>
             </div>
             {/* bottom calender */}
             <div className="flex items-center mt-4">

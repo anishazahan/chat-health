@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const clinics = [
   {
@@ -68,7 +67,14 @@ const ClinicProfileWithLocation = () => {
         </div>
       </div>
       <div className="w-[281px] h-[191px] rounded-[34px]">
-        <MapContainer
+        <Image
+          src={"/images/map.png"}
+          alt={"clinic.name"}
+          width={281}
+          height={19}
+          className="w-[281px] h-[191px]  rounded-[34px]"
+        />
+        {/* <MapContainer
           style={{ borderRadius: "34px !important" }}
           center={[51.505, -0.09]}
           zoom={13}
@@ -80,7 +86,7 @@ const ClinicProfileWithLocation = () => {
               <Popup>{clinic.name}</Popup>
             </Marker>
           ))}
-        </MapContainer>
+        </MapContainer> */}
       </div>
     </div>
   );

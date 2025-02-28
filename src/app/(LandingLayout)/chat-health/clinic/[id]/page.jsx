@@ -1,5 +1,7 @@
+import ClinicDetails from "./_components/ClinicDetails";
+
 const ClinicDetail = () => {
-  return <div>ClinicDetail</div>;
+  return <ClinicDetails />;
 };
 
 export default ClinicDetail;

@@ -14,7 +14,14 @@ import {
   FaVial,
   FaXRay,
 } from "react-icons/fa";
-import BackButton from "../BackButton";
+import { IoLanguage } from "react-icons/io5";
+import { MdLanguage, MdOutlineLocalPhone } from "react-icons/md";
+
+import BackButton from "@/components/BackButton";
+import DetailsSignupForm from "@/components/SignUp/DetailsSignupForm";
+import IsBookedModal from "@/components/SignUp/IsBookedModal";
+import { setOpenIsBookedModal } from "@/redux/slices/signUpModalSlice";
+import { useDispatch, useSelector } from "react-redux";
 import ClinicProfileWithLocation from "./ClinicProfileWithLocation";
 
 const doctorData = [
@@ -149,6 +156,8 @@ const doctorData = [
 ];
 
 export default function ClinicDetails() {
+  const dispatch = useDispatch();
+  const { isPrevSignupModal, noSignUp, noLogIn, openIsBookedModal } = useSelector((state) => state.signUpModal);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [showMoreSlotsState, setShowMoreSlotsState] = useState({});
@@ -178,8 +187,8 @@ export default function ClinicDetails() {
   };
 
   return (
-    <div className="px-5 sm:px-10 w-full 2xl:max-w-[1440px] mt-16">
-      <div className="flex justify-between items-center w-full">
+    <div className="px-5 sm:px-10 w-full 2xl:max-w-[1440px] mt-8">
+      <div className="flex justify-between items-center w-full mb-4">
         <BackButton />
         <div className="">
           <CiHeart size={26} />
@@ -192,7 +201,10 @@ export default function ClinicDetails() {
 
       {/* consult button */}
       <div className="flex gap-4 my-5">
-        <button className="flex items-center gap-2 px-6 py-2 h-[48px] rounded-full text-white bg-teal-500 hover:bg-teal-600 shadow-md">
+        <button
+          onClick={() => dispatch(setOpenIsBookedModal(true))}
+          className="flex items-center gap-2 px-6 py-2 h-[48px] rounded-full text-white bg-teal-500 hover:bg-teal-600 shadow-md"
+        >
           <FaStethoscope className="text-lg" />
           <span className="font-medium">Standard Consult</span>
         </button>
@@ -382,11 +394,12 @@ export default function ClinicDetails() {
 
       {/* bottom section */}
       <div className="w-full mt-10">
-        {/* Header Section */}
-        <div className="mb-8  pb-6">
+        {/* Header*/}
+        <div className="  pb-6 max-w-[670px]">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">The Earwax Clinic</h1>
           <p className="text-sm text-gray-600 mb-2">
-            The doctors are all inflows of the Royal Australian College of City, an AERM, and ADEM, accredited.
+            The doctors are all Fellows of the Royal Australian College of GP's. are AHPRA and AGPAL accredited. The
+            full fee must be paid on the day.
           </p>
         </div>
 
@@ -395,7 +408,7 @@ export default function ClinicDetails() {
           {/* Opening Hours */}
           <div className="space-y-4">
             <h2 className="text-lg font-semibold text-gray-900 mb-3">Opening Hours</h2>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {[
                 ["Monday", "8:00am-8:00pm"],
                 ["Thursday", "9:00am-8:00pm"],
@@ -405,9 +418,9 @@ export default function ClinicDetails() {
                 ["Saturday", "9:00am-8:00pm"],
                 ["Sunday", "9:00am-8:00pm"],
               ].map(([day, time], index) => (
-                <div key={index} className="flex justify-between text-sm">
-                  <span className="text-gray-600">{day}</span>
-                  <span className="text-gray-900 font-medium">{time}</span>
+                <div key={index} className="flex gap-6 text-sm">
+                  <span className="text-gray-500 w-28">{day}</span>
+                  <span className="text-gray-500 font-medium">{time}</span>
                 </div>
               ))}
             </div>
@@ -417,31 +430,37 @@ export default function ClinicDetails() {
           <div className="space-y-8">
             <div>
               <h2 className="text-lg font-semibold text-gray-900 mb-3">Language</h2>
-              <p className="text-sm text-gray-600">English</p>
-            </div>
-
-            <div>
-              <h2 className="text-lg font-semibold text-gray-900 mb-3">Contact</h2>
-              <div className="space-y-2 text-sm">
-                <p className="text-gray-900 font-medium">03 5581 2481</p>
-                <a href="https://www.earwax.com.au" className="text-blue-600 hover:text-blue-800 transition-colors">
-                  www.earwax.com.au
-                </a>
+              <div className="flex gap-2 items-center text-gray-500">
+                <IoLanguage />
+                <p className="text-sm text-gray-600">English</p>
               </div>
             </div>
           </div>
 
           {/* Address */}
+
           <div>
-            <h2 className="text-lg font-semibold text-gray-900 mb-3">Location</h2>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Gian Westerley + Barcelona + Benivicx,
-              <br />
-              Melbourne, VIC 5000
-            </p>
+            <h2 className="text-lg font-semibold text-gray-900 mb-3">Contact</h2>
+            <div className="space-y-2 text-sm">
+              <div className="flex text-gray-500 items-center gap-2">
+                <MdOutlineLocalPhone size={18} />
+                <p className="text-gray-900 font-medium">03 5581 2481</p>
+              </div>
+              <div className="flex text-gray-500 items-center gap-2">
+                <MdLanguage size={18} />
+                <a href="https://www.earwax.com.au" className=" hover:text-secondary-dark transition-colors">
+                  www.earwax.com.au
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* modal show */}
+
+      {openIsBookedModal && <IsBookedModal />}
+      {noSignUp && <DetailsSignupForm />}
     </div>
   );
 }

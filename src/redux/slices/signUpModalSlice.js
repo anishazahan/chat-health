@@ -11,7 +11,9 @@ const initialState = {
   addClinicModal: false,
   addDoctorModal: false,
   isShowPaymentForm: false,
-  showClinicDetail: false,
+  openIsBookedModal: false,
+  openSymptomForm: false,
+  isSpinnerModalShow: false,
 };
 
 const signUpModalSlice = createSlice({
@@ -48,8 +50,14 @@ const signUpModalSlice = createSlice({
     setIsShowPaymentForm: (state, action) => {
       state.isShowPaymentForm = action?.payload;
     },
-    handleShowClinicDetail: (state, action) => {
-      state.showClinicDetail = action?.payload;
+    setOpenIsBookedModal: (state, action) => {
+      state.openIsBookedModal = action?.payload;
+    },
+    setOpenSymptomForm: (state, action) => {
+      state.openSymptomForm = action?.payload;
+    },
+    setIsSpinnerModalShow: (state, action) => {
+      state.isSpinnerModalShow = action?.payload;
     },
   },
 });
@@ -65,6 +73,8 @@ export const {
   handleAddClinicModal,
   handleAddDoctorModal,
   setIsShowPaymentForm,
-  handleShowClinicDetail,
+  setOpenIsBookedModal,
+  setOpenSymptomForm,
+  setIsSpinnerModalShow,
 } = signUpModalSlice.actions;
 export default signUpModalSlice.reducer;
