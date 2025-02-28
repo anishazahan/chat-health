@@ -1,10 +1,5 @@
-import Landing from "@/components/Landing/Landing";
+import LandingRedirect from "@/components/Middelware/LandingRedirect";
 
 export default function Home() {
-  return (
-    <div className="">
-      <Landing />
-      {/* <PatientForm />{" "} */}
-    </div>
-  );
+  return <LandingRedirect />;
 }

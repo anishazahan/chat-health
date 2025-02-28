@@ -105,7 +105,7 @@ const SearchLocationResult = () => {
                     className="w-[60px] h-[73px] flex flex-col items-center justify-center border rounded-[16px] mx-1 "
                   >
                     <div className="h-full flex flex-col gap-1 items-center justify-center">
-                      <p className="text-sm text-gray-500">Wed</p>
+                      <p className="text-xs text-gray-500">Wed</p>
                       <p className="font-medium">{day}</p>
                     </div>
                   </div>

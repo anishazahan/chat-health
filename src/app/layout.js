@@ -17,7 +17,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <ReduxProviders>
-        <body className={`${inter.variable} antialiased`}>{children}</body>
+        <body className={`${inter.variable} antialiased`}>
+          {" "}
+          {/* <Navbar />
+          <main className="">{children}</main>
+          <Footer /> */}
+          {children}
+        </body>
       </ReduxProviders>
     </html>
   );

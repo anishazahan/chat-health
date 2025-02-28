@@ -27,7 +27,7 @@ const clinics = [
   },
 ];
 
-const ClinicDetailsProfile = () => {
+const ClinicProfileWithLocation = () => {
   return (
     <div className="flex items-start justify-between pb-4 border-b border-dashed">
       {" "}
@@ -86,4 +86,4 @@ const ClinicDetailsProfile = () => {
   );
 };
 
-export default ClinicDetailsProfile;
+export default ClinicProfileWithLocation;

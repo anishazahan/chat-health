@@ -1,7 +1,5 @@
-import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
 import { Inter } from "next/font/google";
-import "./globals.css";
 
 // Import Inter font
 const inter = Inter({
@@ -19,7 +17,7 @@ export default function RootLayout({ children }) {
     <div className="">
       <Navbar />
       <main className="">{children}</main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
