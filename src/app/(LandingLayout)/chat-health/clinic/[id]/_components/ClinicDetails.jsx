@@ -20,7 +20,8 @@ import { MdLanguage, MdOutlineLocalPhone } from "react-icons/md";
 import BackButton from "@/components/BackButton";
 import DetailsSignupForm from "@/components/SignUp/DetailsSignupForm";
 import IsBookedModal from "@/components/SignUp/IsBookedModal";
-import { setOpenIsBookedModal } from "@/redux/slices/signUpModalSlice";
+import SymptomForm from "@/components/SymptomsChat/SymptomsForm";
+import { setOpenIsBookedModal, setOpenSymptomForm } from "@/redux/slices/signUpModalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import ClinicProfileWithLocation from "./ClinicProfileWithLocation";
 
@@ -157,7 +158,9 @@ const doctorData = [
 
 export default function ClinicDetails() {
   const dispatch = useDispatch();
-  const { isPrevSignupModal, noSignUp, noLogIn, openIsBookedModal } = useSelector((state) => state.signUpModal);
+  const { isPrevSignupModal, noSignUp, noLogIn, openIsBookedModal, openSymptomForm } = useSelector(
+    (state) => state.signUpModal
+  );
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [showMoreSlotsState, setShowMoreSlotsState] = useState({});
@@ -209,7 +212,10 @@ export default function ClinicDetails() {
           <span className="font-medium">Standard Consult</span>
         </button>
 
-        <button className="flex items-center gap-2 h-[48px]  px-7 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-100 shadow-md">
+        <button
+          onClick={() => dispatch(setOpenSymptomForm(true))}
+          className="flex items-center gap-2 h-[48px]  px-7 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-100 shadow-md"
+        >
           <FaPhoneAlt className="text-lg text-red-500" />
           <span className="font-medium">Telehealth</span>
         </button>
@@ -461,6 +467,7 @@ export default function ClinicDetails() {
 
       {openIsBookedModal && <IsBookedModal />}
       {noSignUp && <DetailsSignupForm />}
+      {openSymptomForm && <SymptomForm />}
     </div>
   );
 }
