@@ -3,7 +3,6 @@
 import { useSelector } from "react-redux";
 import SearchingConsultResult from "../SearchResult/Consult/SearchingConsultResult";
 import SearchLocationResult from "../SearchResult/SearchLocationResult";
-import AppointmentDashboard from "./LandingForm";
 import QuickConsultServiceCard from "./QuickConsultServiceCard";
 import SearchBox from "./SearchBox";
 
@@ -26,8 +25,6 @@ const Landing = () => {
       {selectedConsult && !selectedLocation && <SearchingConsultResult />}
 
       {/* <ClinicDetails /> */}
-
-      <AppointmentDashboard />
     </div>
   );
 };

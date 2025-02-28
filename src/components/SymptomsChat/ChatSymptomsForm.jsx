@@ -1,5 +1,7 @@
 "use client";
 
+import { setOpenSymptomForm } from "@/redux/slices/signUpModalSlice";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
@@ -10,8 +12,11 @@ import {
   AiOutlineLike,
   AiOutlinePaperClip,
 } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 
-export default function ChatSymptomForm() {
+export default function ChatSymptomForm({ setShowChatMOdal }) {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const { register, handleSubmit, reset } = useForm();
   const [messages, setMessages] = useState([
     {
@@ -115,7 +120,14 @@ export default function ChatSymptomForm() {
       </form>
 
       {/* Submit Button */}
-      <button className="mt-4 bg-primary-dark text-white py-3 px-8 rounded-full font-semibold hover:opacity-90">
+      <button
+        onClick={() => {
+          setShowChatMOdal(false);
+          router.push("/dashboard/patient");
+          dispatch(setOpenSymptomForm(false));
+        }}
+        className="mt-4 bg-primary-dark text-white py-3 px-8 rounded-full font-semibold hover:opacity-90"
+      >
         Submit Symptoms
       </button>
 

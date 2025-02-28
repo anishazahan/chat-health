@@ -79,7 +79,7 @@ export default function SymptomForm() {
           </div>
         )}
 
-        {showChatModal && <ChatSymptomForm />}
+        {showChatModal && <ChatSymptomForm setShowChatMOdal={setShowChatMOdal} />}
       </div>
     </Modal>
   );
