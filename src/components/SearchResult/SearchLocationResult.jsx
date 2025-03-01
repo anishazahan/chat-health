@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useDispatch } from "react-redux";
 import Checkbox from "../Checkbox";
 
@@ -120,7 +119,7 @@ const SearchLocationResult = () => {
 
       {/* Right side map */}
       <div className=" w-full lg:w-1/2 h-[500px] rounded-[34px] ">
-        <MapContainer
+        {/* <MapContainer
           style={{ borderRadius: "34px !important" }}
           center={[51.505, -0.09]}
           zoom={13}
@@ -132,7 +131,7 @@ const SearchLocationResult = () => {
               <Popup>{clinic.name}</Popup>
             </Marker>
           ))}
-        </MapContainer>
+        </MapContainer> */}
       </div>
     </div>
   );
